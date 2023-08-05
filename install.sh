@@ -129,7 +129,9 @@ install_x-ui() {
     #echo -e "如果是更新面板，则按你之前的方式访问面板"
     #echo -e ""
 
-    /usr/local/x-ui/x-ui setting -port 8522
+    random_port=$(shuf -i 2000-65535 -n 1)
+    
+    /usr/local/x-ui/x-ui setting -port $random_port
     /usr/local/x-ui/x-ui setting -username qwe123 -password qwe123
     systemctl daemon-reload
     systemctl enable x-ui
@@ -155,7 +157,7 @@ install_x-ui() {
     echo -e "x-ui install      - 安装 x-ui 面板"
     echo -e "x-ui uninstall    - 卸载 x-ui 面板"
     echo -e "x-ui geo          - 更新 geo  数据"
-    echo -e "----------------------------------------------     $ip_address:8522"
+    echo -e "----------------------------------------------     $ip_address:$random_port"
     echo -e "					 "
 }
 
