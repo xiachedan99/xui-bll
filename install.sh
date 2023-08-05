@@ -153,8 +153,8 @@ install_x-ui() {
     echo -e "x-ui install      - 安装 x-ui 面板"
     echo -e "x-ui uninstall    - 卸载 x-ui 面板"
     echo -e "x-ui geo          - 更新 geo  数据"
-    echo -e "----------------------------------------------"
-    echo -e "					$ip_address:8522 "
+    echo -e "----------------------------------------------     $ip_address:8522"
+    echo -e "					 "
 }
 
 echo -e "${green}开始安装${plain}"
