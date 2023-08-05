@@ -134,7 +134,9 @@ install_x-ui() {
     systemctl daemon-reload
     systemctl enable x-ui
     systemctl start x-ui
-    echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf; echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf; sysctl -p
+    echo "net.core.default_qdisc=fq" > /etc/sysctl.conf
+    echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+    sysctl -p
     ip_address=$(curl -s https://api.ipify.org)
     echo -e "${green}x-ui v${last_version}${plain} 安装完成，面板已启动，"
     echo -e ""
