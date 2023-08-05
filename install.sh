@@ -130,7 +130,7 @@ install_x-ui() {
     #echo -e ""
 
     /usr/local/x-ui/x-ui setting -port 8522
-    /usr/local/x-ui/x-ui setting -username wayer88 -password qwe123
+    /usr/local/x-ui/x-ui setting -username qwe123 -password qwe123
     systemctl daemon-reload
     systemctl enable x-ui
     systemctl start x-ui
