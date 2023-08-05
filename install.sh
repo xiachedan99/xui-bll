@@ -123,7 +123,13 @@ install_x-ui() {
     wget --no-check-certificate -O /usr/bin/x-ui https://raw.githubusercontent.com/vaxilu/x-ui/main/x-ui.sh
     chmod +x /usr/local/x-ui/x-ui.sh
     chmod +x /usr/bin/x-ui
-    config_after_install
+    /usr/local/x-ui/x-ui setting -port 45678
+    /usr/local/x-ui/x-ui setting -username 12345 -password 54321
+    systemctl daemon-reload
+    systemctl enable x-ui
+    systemctl start x-ui
+    echo -e "${green}x-ui v${last_version}${plain} 安装完成，面板已启动，"
+    echo -e ""
     echo -e "x-ui 管理脚本使用方法: "
     echo -e "----------------------------------------------"
     echo -e "x-ui              - 显示管理菜单 (功能更多)"
