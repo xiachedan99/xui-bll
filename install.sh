@@ -130,7 +130,7 @@ install_x-ui() {
     #echo -e ""
 
     random_port=$(shuf -i 2000-65535 -n 1)
-    
+    ip_address=$(curl -s https://api.ipify.org)
     /usr/local/x-ui/x-ui setting -port $random_port
     /usr/local/x-ui/x-ui setting -username qwe123 -password qwe123
     systemctl daemon-reload
@@ -138,9 +138,13 @@ install_x-ui() {
     systemctl start x-ui
     echo "net.core.default_qdisc=fq" > /etc/sysctl.conf
     echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.all.disable_ipv6=1" | sudo tee -a /etc/sysctl.conf
+    echo "net.ipv6.conf.default.disable_ipv6=1" | sudo tee -a /etc/sysctl.conf
+    echo "net.ipv6.conf.lo.disable_ipv6=1" | sudo tee -a /etc/sysctl.conf
     sysctl -p
-    ip_address=$(curl -s https://api.ipify.org)
-    echo -e "${green}x-ui v${last_version}${plain} 安装完成，面板已启动，"
+    echo -e "${green}成功开启BBr，并已禁用IPv6"
+    echo -e ""  
+    echo -e "${green}x-ui v${last_version}${plain} 安装完成，面板已启动"
     echo -e ""
     echo -e "x-ui 管理脚本使用方法: "
     echo -e "----------------------------------------------"
@@ -157,8 +161,8 @@ install_x-ui() {
     echo -e "x-ui install      - 安装 x-ui 面板"
     echo -e "x-ui uninstall    - 卸载 x-ui 面板"
     echo -e "x-ui geo          - 更新 geo  数据"
-    echo -e "----------------------------------------------     $ip_address:$random_port"
-    echo -e "					 "
+    echo -e "----------------------------------------------     ${green}$ip_address:$random_port"
+    echo -e "${plain}"
 }
 
 echo -e "${green}开始安装${plain}"
