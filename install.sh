@@ -136,8 +136,8 @@ install_x-ui() {
     #echo "net.ipv6.conf.default.disable_ipv6=1" | sudo tee -a /etc/sysctl.conf
     #echo "net.ipv6.conf.lo.disable_ipv6=1" | sudo tee -a /etc/sysctl.conf
     sysctl -p
-    #echo -e "${green}成功开启BBr，并已禁用IPv6"
-    echo -e "${green}成功开启BBr"
+    #echo -e "${green}成功开启BBR，并已禁用IPv6"
+    echo -e "${green}成功开启BBR"
     echo -e ""  
     echo -e "${green}x-ui v${last_version}${plain} 安装完成，面板已启动"
     echo -e ""
