@@ -158,7 +158,7 @@ install_x-ui() {
     #echo -e "x-ui geo          - 更新 geo  数据"
     #echo -e "x-ui配置备份文件路径： /etc/x-ui "
     #echo -e "----------------------------------------------     ${green}$ip_address:$random_port"
-    echo -e "----------------------------------------------     ${green}$ip_address:8522"
+    echo -e "----------------------------------------------              ${green}$ip_address:8522"
     echo -e "${plain}"
 }
 
